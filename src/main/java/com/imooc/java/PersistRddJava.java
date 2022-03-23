@@ -17,7 +17,7 @@ public class PersistRddJava {
                 .setMaster("local");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        JavaRDD<String> dataRDD = sc.textFile("D:\\hello_10000000.dat").cache();
+        JavaRDD<String> dataRDD = sc.textFile("/Users/zhujunxiao/Downloads/学习资料/bigdata_course_materials/spark/上/hello.txt").cache();
 
         long start_time = System.currentTimeMillis();
         long count = dataRDD.count();

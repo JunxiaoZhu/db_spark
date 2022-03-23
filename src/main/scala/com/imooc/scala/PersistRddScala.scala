@@ -17,13 +17,12 @@ object PersistRddScala {
     //注意cache的用法和位置
     //cache默认是基于内存的持久化
     // cache()=persist()=persist(StorageLevel.MEMORY_ONLY)
-    val dataRDD = sc.textFile("D:\\hello_10000000.dat").cache()
+    val dataRDD = sc.textFile("/Users/zhujunxiao/Downloads/学习资料/bigdata_course_materials/spark/上/hello.txt")
     var start_time = System.currentTimeMillis()
     var count = dataRDD.count()
     println(count)
     var end_time = System.currentTimeMillis()
     println("第一次耗时："+(end_time-start_time))
-
 
     start_time = System.currentTimeMillis()
     count = dataRDD.count()

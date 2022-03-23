@@ -12,11 +12,11 @@ object WordCountScala {
     //第一步：创建SparkContext
     val conf = new SparkConf()
     conf.setAppName("WordCountScala")//设置任务名称
-      //.setMaster("local")//local表示在本地执行
+      .setMaster("local")//local表示在本地执行
     val sc = new SparkContext(conf)
 
     //第二步：加载数据
-    var path = "D:\\hello.txt"
+    var path = "/Users/zhujunxiao/Downloads/logs/hello.txt"
     if(args.length==1){
       path = args(0)
     }
@@ -29,7 +29,7 @@ object WordCountScala {
     val pairRDD = wordsRDD.map((_,1))
 
     //第五步：根据key(其实就是word)进行分组聚合统计
-    val wordCountRDD = pairRDD.reduceByKey(_ + _)
+    val wordCountRDD = pairRDD.reduceByKey(_ + _).sortBy(_._2,false)
 
     //第六步：将结果打印到控制台
     //注意：只有当任务执行到这一行代码的时候，任务才会真正开始执行计算
