@@ -23,13 +23,13 @@ object ActionOpScala {
     //collect：获取元素集合
     //collectOp(sc)
     //take(n)：获取前n个元素
-    //takeOp(sc)
+    takeOp(sc)
     //count：获取元素总数
     //countOp(sc)
     //saveAsTextFile：保存文件
     //saveAsTextFileOp(sc)
     //countByKey：统计相同的key出现多少次
-    countByKeyOp(sc)
+    //countByKeyOp(sc)
     //foreach：迭代遍历元素
     //foreachOp(sc)
 

@@ -18,7 +18,7 @@ object DataFrameOpScala {
       .config(conf)
       .getOrCreate()
 
-    val stuDf = sparkSession.read.json("D:\\student.json")
+    val stuDf = sparkSession.read.json("/Users/zhujunxiao/Downloads/学习资料/bigdata_course_materials/spark/下/student.json").as("aa")
 
     //打印schema信息
     stuDf.printSchema()
@@ -29,17 +29,17 @@ object DataFrameOpScala {
     //查询数据中的指定字段信息
     stuDf.select("name","age").show()
 
-    //在使用select的时候可以对数据做一些操作，需要添加隐式转换函数，否则语法报错
-    import sparkSession.implicits._
-    stuDf.select($"name",$"age"+1).show()
+     //在使用select的时候可以对数据做一些操作，需要添加隐式转换函数，否则语法报错
+     import sparkSession.implicits._
+     stuDf.select($"name",$"age"+1).show()
 
-    //对数据进行过滤，需要添加隐式转换函数，否则报错
-    stuDf.filter($"age">18).show()
-    //where底层调用的就是filter
-    stuDf.where($"age">18).show()
+     //对数据进行过滤，需要添加隐式转换函数，否则报错
+     stuDf.filter($"age">18).show()
+     //where底层调用的就是filter
+     stuDf.where($"age">18).show()
 
-    //对数据进行分组求和
-    stuDf.groupBy("age").count().show()
+     //对数据进行分组求和
+     stuDf.groupBy("age").count().show()
 
     sparkSession.stop()
   }

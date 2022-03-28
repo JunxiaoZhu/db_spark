@@ -9,7 +9,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  */
 object KryoSerScala {
 
-  /*def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit = {
     val conf = new SparkConf()
     conf.setAppName("KryoSerScala")
       .setMaster("local")
@@ -18,7 +18,8 @@ object KryoSerScala {
       .registerKryoClasses(Array(classOf[Person]))//注册自定义的数据类型
     val sc = new SparkContext(conf)
 
-    val dataRDD = sc.parallelize(Array("hello you","hello me"))
+    val lp = Array("hello you","hello me")
+    val dataRDD = sc.parallelize(lp)
     val wordsRDD = dataRDD.flatMap(_.split(" "))
     val personRDD = wordsRDD.map(word=>Person(word,18)).persist(StorageLevel.MEMORY_ONLY_SER)
     personRDD.foreach(println(_))
@@ -27,6 +28,6 @@ object KryoSerScala {
       ;
     }
   }
-*/
+
 }
 case class Person(name: String,age: Int) extends Serializable

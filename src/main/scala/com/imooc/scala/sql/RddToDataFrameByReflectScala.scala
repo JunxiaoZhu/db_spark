@@ -8,7 +8,7 @@ import org.apache.spark.sql.SparkSession
  * Created by xuwei
  */
 object RddToDataFrameByReflectScala {
-  /*def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit = {
     val conf = new SparkConf()
       .setMaster("local")
 
@@ -21,7 +21,8 @@ object RddToDataFrameByReflectScala {
     //获取SparkContext
     val sc = sparkSession.sparkContext
 
-    val dataRDD = sc.parallelize(Array(("jack",18),("tom",20),("jessic",30)))
+    val ty = Array(("jack",18),("tom",20),("jessic",30))
+    val dataRDD = sc.parallelize(ty)
 
     //基于反射直接将包含Student对象的dataRDD转换为dataFrame
 
@@ -48,7 +49,7 @@ object RddToDataFrameByReflectScala {
       .foreach(println(_))
 
     sparkSession.stop()
-  }*/
+  }
 
 }
 

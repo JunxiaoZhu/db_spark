@@ -18,14 +18,14 @@ object DataFrameSqlScala {
       .config(conf)
       .getOrCreate()
 
-    val stuDf = sparkSession.read.json("D:\\student.json")
+    val stuDf = sparkSession.read.json("/Users/zhujunxiao/Downloads/学习资料/bigdata_course_materials/spark/下/student.json")
 
     //将DataFrame注册为一个临时表
     stuDf.createOrReplaceTempView("student")
 
     //使用sql查询临时表中的数据
     sparkSession.sql("select age,count(*) as num from student group by age")
-      .show()
+      .show(1)
 
     sparkSession.stop()
   }

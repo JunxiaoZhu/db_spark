@@ -52,9 +52,9 @@ public class RddToDataFrameReflectJava {
         Dataset<Row> resDf = sparkSession.sql("select name,age from student where age > 18");
 
         //将DataFrame转化为RDD，注意，这里需要转化为JavaRDD
-        JavaRDD<Row> resRDD = resDf.javaRDD();
+        resDf.javaRDD().foreach(q->System.out.println(q));
         //从row中取数据，封装成student，打印到控制台
-        List<Student> resList = resRDD.map(new Function<Row, Student>() {
+        /*List<Student> resList = resRDD.map(new Function<Row, Student>() {
             @Override
             public Student call(Row row) throws Exception {
                 //return new Student(row.getString(0),row.getInt(1));
@@ -65,7 +65,7 @@ public class RddToDataFrameReflectJava {
 
         for(Student stu: resList){
             System.out.println(stu);
-        }
+        }*/
 
         sparkSession.stop();
     }

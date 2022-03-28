@@ -10,7 +10,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 object CheckpointOpScala {
 
   def main(args: Array[String]): Unit = {
-    val ip = "172.16.7.218"
+    val ip = "172.16.7.220"
 
     val conf = new SparkConf()
     conf.setAppName("CheckpointOpScala")
@@ -28,12 +28,9 @@ object CheckpointOpScala {
 
     val ty = dataRDD.flatMap(_.split(" "))
 
-    ty.checkpoint()
 
     ty.map((_,1))
       .reduceByKey(_ + _).foreach(println(_))
-
-    dataRDD.foreach(println(_))
 
     sc.stop()
 

@@ -10,7 +10,7 @@ import org.apache.spark.sql.{Row, SparkSession}
  * Created by xuwei
  */
 object RddToDataFrameByProgramScala {
-  /*def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit = {
     val conf = new SparkConf()
       .setMaster("local")
 
@@ -23,7 +23,8 @@ object RddToDataFrameByProgramScala {
     //获取SparkContext
     val sc = sparkSession.sparkContext
 
-    val dataRDD = sc.parallelize(Array(("jack",18),("tom",20),("jessic",30)))
+    val ty = Array(("jack",18),("tom",20),("jessic",30))
+    val dataRDD = sc.parallelize(ty)
 
     //组装rowRDD
     val rowRDD = dataRDD.map(tup=>Row(tup._1,tup._2))
@@ -49,6 +50,6 @@ object RddToDataFrameByProgramScala {
       .foreach(println(_))
 
     sparkSession.stop()
-  }*/
+  }
 
 }

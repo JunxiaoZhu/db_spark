@@ -10,8 +10,7 @@ import org.apache.spark.sql.SparkSession
 object SqlDemoScala {
 
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf()
-        .setMaster("local")
+    val conf = new SparkConf().setMaster("local")
 
     //创建SparkSession对象，里面包含SparkContext和SqlContext
     val sparkSession = SparkSession.builder()
@@ -20,7 +19,7 @@ object SqlDemoScala {
       .getOrCreate()
 
     //读取json文件，获取DataFrame
-    val stuDf = sparkSession.read.json("D:\\student.json").as("stu")
+    val stuDf = sparkSession.read.json("/Users/zhujunxiao/Downloads/学习资料/bigdata_course_materials/spark/下/student.json").as("aa")
 
     //查看DataFrame中的数据
     stuDf.show()
