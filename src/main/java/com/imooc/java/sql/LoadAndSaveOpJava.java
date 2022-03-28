@@ -3,6 +3,7 @@ package com.imooc.java.sql;
 import org.apache.spark.SparkConf;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
 
 /**
@@ -22,13 +23,14 @@ public class LoadAndSaveOpJava {
                 .getOrCreate();
 
         //读取数据
-        Dataset<Row> stuDf = sparkSession.read().format("json").load("D:\\student.json");
+        Dataset<Row> stuDf = sparkSession.read().format("json").load("/Users/zhujunxiao/Downloads/学习资料/bigdata_course_materials/spark/下/student.json");
 
         //保存数据
         stuDf.select("name","age")
                 .write()
                 .format("csv")
-                .save("hdfs://bigdata01:9000/out-save002");
+                //.mode(SaveMode.Ignore)
+                .save("/Users/zhujunxiao/Downloads/logs/test");
 
         sparkSession.stop();
     }
